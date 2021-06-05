@@ -105,6 +105,7 @@ function shuffleArray(array) {
 const shuffleRandomArray = shuffleArray(randomPhotoIndex);
 const shuffleRandomCommentId = shuffleArray(randomCommentId);
 
+// Добавила объект комментария под добавленным фото
 const addCommentPhoto = function(indexComment) {
   return {
     id: shuffleRandomCommentId[indexComment],
@@ -114,6 +115,7 @@ const addCommentPhoto = function(indexComment) {
   };
 };
 
+// Добавила объект для фото
 const addUserPhoto = function(index) {
   return {
     id: index,
