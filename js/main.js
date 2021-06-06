@@ -1,15 +1,5 @@
-const calculateLengthComment = function(commentText, maxLengthComment) {
-  return commentText.length <= maxLengthComment;
-};
-
-calculateLengthComment('Какой-то комментарий пользователя',140);
-
-// Задача: На основе написанных по заданию ранее вспомогательных функций напишите необходимые функции для создания
-// массива из 25 сгенерированных объектов. Каждый объект массива — описание фотографии, опубликованной пользователем.
-
 const USER_PHOTO_QUANTITY = 25;
 const USER_AVATAR_QUANTITY = 6;
-const COMMENT_ID_QUANTUTY = 350;
 
 const NAMES = [
   'Вася',
@@ -22,7 +12,7 @@ const NAMES = [
   'Самён',
 ];
 
-const USER_DESCRIPTION = [
+const USER_DESCRIPTIONS = [
   'Hppyness...',
   'Хорошая погода',
   'Спокойствие, только спокойствие',
@@ -50,7 +40,7 @@ const USER_DESCRIPTION = [
   'Улыбка — единственный тренд в моде, который актуален всегда.',
 ];
 
-const COMMENT_MESSAGE = [
+const COMMENT_MESSAGES = [
   'Всё отлично!',
   'В целом всё неплохо. Но не всё.',
   'Когда вы делаете фотографию, хорошо бы убирать палец из кадра. В конце концов это просто непрофессионально.',
@@ -58,6 +48,15 @@ const COMMENT_MESSAGE = [
   'Я поскользнулся на банановой кожуре и уронил фотоаппарат на кота и у меня получилась фотография лучше.',
   'Лица у людей на фотке перекошены, как будто их избивают. Как можно было поймать такой неудачный момент?!',
 ];
+
+const calculateLengthComment = function(commentText, maxLengthComment) {
+  return commentText.length <= maxLengthComment;
+};
+
+calculateLengthComment('Какой-то комментарий пользователя',140);
+
+// Задача: На основе написанных по заданию ранее вспомогательных функций напишите необходимые функции для создания
+// массива из 25 сгенерированных объектов. Каждый объект массива — описание фотографии, опубликованной пользователем.
 
 // Функция для получения случайного числа из указанного интервала.
 // Решила использовать функцию Кекса :) Она более краткая и понятная.
@@ -79,10 +78,6 @@ function getArray(min, max) {
   return arr;
 }
 
-const randomPhotoIndex = getArray(1,USER_PHOTO_QUANTITY);
-const randomCommentAvatar = getArray(1,USER_AVATAR_QUANTITY);
-const randomCommentId = getArray(1,COMMENT_ID_QUANTUTY);
-
 // Функция для перемешивания массива (использовала для получения случайного, но не повторяющегося фото из массива).
 function shuffleArray(array) {
   let currentIndex = array.length;
@@ -102,15 +97,12 @@ function shuffleArray(array) {
   return array;
 }
 
-const shuffleRandomArray = shuffleArray(randomPhotoIndex);
-const shuffleRandomCommentId = shuffleArray(randomCommentId);
-
 // Добавила объект комментария под добавленным фото
 const addCommentPhoto = function(indexComment) {
   return {
-    id: shuffleRandomCommentId[indexComment],
-    avatar: `img/avatar-${randomCommentAvatar[indexComment]}.svg`,
-    message: getRandomArrayElement(COMMENT_MESSAGE),
+    id: indexComment,
+    avatar: `img/avatar-${getRandomPositiveInteger(1,USER_AVATAR_QUANTITY)}.svg`,
+    message: getRandomArrayElement(COMMENT_MESSAGES),
     name: getRandomArrayElement(NAMES),
   };
 };
@@ -119,8 +111,8 @@ const addCommentPhoto = function(indexComment) {
 const addUserPhoto = function(index) {
   return {
     id: index,
-    url: `photos/${shuffleRandomArray[index]}.jpg`,
-    description: USER_DESCRIPTION[index - 1],
+    url: `photos/${shuffleArray(getArray(1,USER_PHOTO_QUANTITY))[index - 1]}.jpg`,
+    description: USER_DESCRIPTIONS[index - 1],
     likes: getRandomPositiveInteger(15, 200),
     comments: new Array(getRandomPositiveInteger(1,5)).fill(null).map((item,indexComment) => addCommentPhoto(indexComment + 1)),
   };
