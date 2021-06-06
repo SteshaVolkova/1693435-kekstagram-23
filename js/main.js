@@ -74,8 +74,7 @@ const getRandomArrayElement = function(elements) {
 
 // Получаем массив для дальнейшего его перемешивания.
 function getArray(min, max) {
-  const arr = Array.from(Array(max - min + 1).keys(), (x) => (x + min));
-  return arr;
+  return Array.from(Array(max - min + 1).keys(), (x) => (x + min));
 }
 
 // Функция для перемешивания массива (использовала для получения случайного, но не повторяющегося фото из массива).
