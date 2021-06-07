@@ -1,5 +1,9 @@
 const USER_PHOTO_QUANTITY = 25;
 const USER_AVATAR_QUANTITY = 6;
+const MAX_QUANTITY_SYMBOL = 140;
+const MIN_LIKES_QUANTI = 15;
+const MAX_LIKES_QUANTITY = 200;
+const MAX_COMMENT_QUANTITY = 5;
 
 const NAMES = [
   'Вася',
@@ -53,7 +57,7 @@ const calculateLengthComment = function(commentText, maxLengthComment) {
   return commentText.length <= maxLengthComment;
 };
 
-calculateLengthComment('Какой-то комментарий пользователя',140);
+calculateLengthComment('Какой-то комментарий пользователя',MAX_QUANTITY_SYMBOL);
 
 // Задача: На основе написанных по заданию ранее вспомогательных функций напишите необходимые функции для создания
 // массива из 25 сгенерированных объектов. Каждый объект массива — описание фотографии, опубликованной пользователем.
@@ -112,8 +116,8 @@ const addUserPhoto = function(index) {
     id: index,
     url: `photos/${shuffleArray(getArray(1,USER_PHOTO_QUANTITY))[index - 1]}.jpg`,
     description: USER_DESCRIPTIONS[index - 1],
-    likes: getRandomPositiveInteger(15, 200),
-    comments: new Array(getRandomPositiveInteger(1,5)).fill(null).map((item,indexComment) => addCommentPhoto(indexComment + 1)),
+    likes: getRandomPositiveInteger(MIN_LIKES_QUANTI, MAX_LIKES_QUANTITY),
+    comments: new Array(getRandomPositiveInteger(1,MAX_COMMENT_QUANTITY)).fill(null).map((item,indexComment) => addCommentPhoto(indexComment + 1)),
   };
 };
 
