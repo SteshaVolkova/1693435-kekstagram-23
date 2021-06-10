@@ -1,4 +1,4 @@
-import {calculateLengthComment} from './comment-length.js';
+import './utils.js';
 import './show-photos.js';
 import './choose-photo.js';
 import './rescale-photo.js';
@@ -19,7 +19,3 @@ import './filter-photos.js';
 import './show-filters.js';
 import './render-images.js';
 import './put-photo.js';
-
-const MAX_QUANTITY_SYMBOL = 140;
-
-calculateLengthComment('Какой-то комментарий пользователя' , MAX_QUANTITY_SYMBOL);

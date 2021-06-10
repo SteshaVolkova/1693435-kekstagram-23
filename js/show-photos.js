@@ -1,5 +1,5 @@
 import {addCommentPhoto} from './show-comments.js';
-import {getRandomPositiveInteger} from './util.js';
+import {getRandomPositiveInteger} from './utils.js';
 
 const USER_PHOTO_QUANTITY = 25;
 const MIN_LIKES_QUANTI = 15;
