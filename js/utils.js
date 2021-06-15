@@ -13,12 +13,10 @@ const getRandomPositiveInteger = (a, b) => {
 const getRandomArrayElement = (elements) =>
   elements[getRandomPositiveInteger(0, elements.length - 1)];
 
-export {getRandomPositiveInteger, getRandomArrayElement};
-
 // Вычисляем длину строки
 const calculateLengthComment = (commentText, maxLengthComment) =>
   commentText.length <= maxLengthComment;
 
-export {calculateLengthComment};
-
 calculateLengthComment('Какой-то комментарий пользователя' , MAX_QUANTITY_SYMBOL);
+
+export {getRandomPositiveInteger, getRandomArrayElement, calculateLengthComment};
