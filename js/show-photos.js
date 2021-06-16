@@ -43,6 +43,6 @@ const addUserPhoto = (index) => ({
   comments: new Array(getRandomPositiveInteger(1,MAX_COMMENT_QUANTITY)).fill(null).map((item,indexComment) => addCommentPhoto(indexComment + 1)),
 });
 
-const userPhotoArray = new Array(USER_PHOTO_QUANTITY).fill(null).map((item,index) => addUserPhoto(index + 1));
+const userPhotos = new Array(USER_PHOTO_QUANTITY).fill(null).map((item,index) => addUserPhoto(index + 1));
 
-export {userPhotoArray};
+export {userPhotos};
