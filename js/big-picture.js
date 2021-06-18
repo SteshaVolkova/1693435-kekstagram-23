@@ -3,7 +3,7 @@ import {userPhotos} from './show-photos.js';
 
 const PICTURE_SIZE = 35;
 
-const photoList = pictures.querySelectorAll('.picture');
+const photos = pictures.querySelectorAll('.picture');
 const bigPicture = document.querySelector('.big-picture');
 const bigPictureImage = bigPicture.querySelector('img');
 const bigPictureLikes = bigPicture.querySelector('.likes-count');
@@ -14,20 +14,20 @@ const commentsLoader = bigPicture.querySelector('.comments-loader');
 const commentsList = bigPicture.querySelector('.social__comments');
 const commentFragment = document.createDocumentFragment();
 
-const addPhotoListClickHandlers = (photoItem, photo) => {
+const addPhotoListClickHandlers = (photoItem, {url, likes, comments, description}) => {
   photoItem.addEventListener('click', () => {
     bigPicture.classList.remove('hidden');
     socialCommentCount.classList.add('hidden');
     commentsLoader.classList.add('hidden');
     document.body.classList.add('modal-open');
 
-    bigPictureImage.src = photo.url;
-    bigPictureLikes.textContent = photo.likes;
-    bigPictureComments.textContent = photo.comments;
-    bigPictureDescription.textContent = photo.description;
+    bigPictureImage.src = url;
+    bigPictureLikes.textContent = likes;
+    bigPictureComments.textContent = comments.length;
+    bigPictureDescription.textContent = description;
 
 
-    photo.comments.forEach((comment) => {
+    comments.forEach((comment) => {
       const commentBlock = document.createElement('li');
       const commentPicture = document.createElement('img');
       const commentText = document.createElement('p');
@@ -52,10 +52,6 @@ const addPhotoListClickHandlers = (photoItem, photo) => {
   });
 };
 
-// photoList.forEach(({photoList, userPhoto}) => {
-//   addPhotoListClickHandlers(photoList, userPhotos);
-// });
-
-for (let i = 0; i < photoList.length; i++) {
-  addPhotoListClickHandlers(photoList[i], userPhotos[i]);
-}
+photos.forEach((photo, i) => {
+  addPhotoListClickHandlers(photo, userPhotos[i]);
+});
