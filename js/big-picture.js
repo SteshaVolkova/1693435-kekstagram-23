@@ -27,7 +27,7 @@ const addPhotoListClickHandlers = (photoItem, {url, likes, comments, description
     bigPictureDescription.textContent = description;
 
 
-    comments.forEach((comment) => {
+    comments.forEach(({avatar, name, message}) => {
       const commentBlock = document.createElement('li');
       const commentPicture = document.createElement('img');
       const commentText = document.createElement('p');
@@ -35,14 +35,14 @@ const addPhotoListClickHandlers = (photoItem, {url, likes, comments, description
       commentBlock.classList.add('social__comment');
       commentPicture.classList.add('social__picture');
       commentText.classList.add('social__text');
-      commentPicture.src = comment.avatar;
-      commentPicture.alt = comment.name;
+      commentPicture.src = avatar;
+      commentPicture.alt = name;
       commentPicture.width = PICTURE_SIZE;
       commentPicture.height = PICTURE_SIZE;
 
       commentsList.innerHTML = '';
 
-      commentText.textContent = comment.message;
+      commentText.textContent = message;
       commentBlock.appendChild(commentPicture);
       commentBlock.appendChild(commentText);
       commentFragment.appendChild(commentBlock);
