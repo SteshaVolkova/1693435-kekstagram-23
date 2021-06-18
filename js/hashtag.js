@@ -1,7 +1,5 @@
 const textHashtag = document.querySelector('.text__hashtags');
 const uploadSubmit = document.querySelector('#upload-submit');
-const MIN_HASHTAG_LENGTH = 2;
-const MAX_HASHTAG_LENGTH = 19;
 const MAX_HASHTAGS_COUNT = 5;
 const regexHeshtagValue = /^#[A-za-zА-Яа-я0-9]{1,19}$/;
 
@@ -10,11 +8,9 @@ uploadSubmit.addEventListener('submit', (evt) => {
 });
 
 
-let onSubmitButton = (evt) => {
-  const hashtagLength = textHashtag.value.length;
-  const hashtagValue = textHashtag.value;
+const onSubmitButton = (evt) => {
   if (textHashtag.value !== '') {
-    let hashtags = textHashtag.value.split(' ');
+    const hashtags = textHashtag.value.split(' ');
 
     hashtags.forEach((hashtag, i) => {
 
@@ -28,9 +24,9 @@ let onSubmitButton = (evt) => {
 
       textHashtag.reportValidity();
 
-      let positionNextHashtag = i + 1;
+      const positionNextHashtag = i + 1;
       if (hashtags.indexOf(hashtag, positionNextHashtag) > 0) {
-        textHashtag.setCustomValidity(`Хэштеги не должны повторяться`);
+        textHashtag.setCustomValidity('Хэштеги не должны повторяться');
         evt.preventDefault();
       }
     });

@@ -1,7 +1,6 @@
 import {isEscEvent} from './utils.js';
 
 const bigPicture = document.querySelector('.big-picture');
-const closeButton = bigPicture.querySelector('.big-picture__cancel');
 const commentsLoader = bigPicture.querySelector('.comments-loader');
 const socialCommentCount = bigPicture.querySelector('.social__comment-count');
 const commentInput = bigPicture.querySelector('.social__footer-text');
