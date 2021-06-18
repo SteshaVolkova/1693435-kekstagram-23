@@ -19,4 +19,6 @@ const calculateLengthComment = (commentText, maxLengthComment) =>
 
 calculateLengthComment('Какой-то комментарий пользователя' , MAX_QUANTITY_SYMBOL);
 
-export {getRandomPositiveInteger, getRandomArrayElement, calculateLengthComment};
+const isEscEvent = (evt) => evt.keyCode === 27;
+
+export {getRandomPositiveInteger, getRandomArrayElement, calculateLengthComment, isEscEvent};

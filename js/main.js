@@ -6,6 +6,7 @@ import './choose-effects.js';
 import './photo-depth.js';
 import './photo-description.js';
 import './hashtag.js';
+import './comments-validate.js';
 import './send-data.js';
 import './wrong-value.js';
 import './success-form.js';
