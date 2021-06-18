@@ -18,6 +18,6 @@ document.addEventListener('keydown', (evt) => {
     socialCommentCount.classList.remove('hidden');
     commentsLoader.classList.remove('hidden');
     document.body.classList.remove('modal-open');
-		commentInput.value = '';
+    commentInput.value = '';
   }
 });
