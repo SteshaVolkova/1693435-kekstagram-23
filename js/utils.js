@@ -1,5 +1,3 @@
-const MAX_QUANTITY_SYMBOL = 140;
-
 // Функция для получения случайного числа из указанного интервала.
 // Решила использовать функцию Кекса :) Она более краткая и понятная.
 const getRandomPositiveInteger = (a, b) => {
@@ -13,12 +11,7 @@ const getRandomPositiveInteger = (a, b) => {
 const getRandomArrayElement = (elements) =>
   elements[getRandomPositiveInteger(0, elements.length - 1)];
 
-// Вычисляем длину строки
-const calculateLengthComment = (commentText, maxLengthComment) =>
-  commentText.length <= maxLengthComment;
-
-calculateLengthComment('Какой-то комментарий пользователя' , MAX_QUANTITY_SYMBOL);
 
 const isEscEvent = (evt) => evt.keyCode === 27;
 
-export {getRandomPositiveInteger, getRandomArrayElement, calculateLengthComment, isEscEvent};
+export {getRandomPositiveInteger, getRandomArrayElement, isEscEvent};

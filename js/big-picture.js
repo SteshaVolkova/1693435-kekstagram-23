@@ -1,6 +1,6 @@
 import {pictures} from './render-images.js';
 import {userPhotos} from './show-photos.js';
-import {closeBigPhoto} from './close.js';
+import {closeModal} from './close.js';
 
 const PICTURE_SIZE = 35;
 
@@ -49,14 +49,14 @@ const addPhotoListClickHandlers = (photoItem, {url, likes, comments, description
       commentBlock.appendChild(commentText);
       commentFragment.appendChild(commentBlock);
 
-      closeButton.addEventListener('click', closeBigPhoto);
+      closeButton.addEventListener('click', closeModal);
     });
 
     commentsList.appendChild(commentFragment);
 
   };
 
-  closeButton.removeEventListener('click', closeBigPhoto);
+  closeButton.removeEventListener('click', closeModal);
   photoItem.addEventListener('click', openBigPicture);
 };
 
