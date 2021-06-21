@@ -1,12 +1,11 @@
+import {calculateLengthComment} from'./utils.js';
+
 const MAX_QUANTITY_SYMBOL = 140;
-const userUploadPhoto = document.querySelector('.img-upload__overlay');
-const commentDescription = userUploadPhoto.querySelector('.text__description');
 const ERROR_BORDER_COLOR = 'red';
 const DEFAULT_BORDER_COLOR = 'black';
 
-// Вычисляем длину строки
-const calculateLengthComment = (commentText, maxLengthComment) =>
-  commentText.length <= maxLengthComment;
+const userUploadPhoto = document.querySelector('.img-upload__overlay');
+const commentDescription = userUploadPhoto.querySelector('.text__description');
 
 const validationFormDescription = (evt) => {
   const textDescriptionLength = calculateLengthComment(commentDescription.value, MAX_QUANTITY_SYMBOL);

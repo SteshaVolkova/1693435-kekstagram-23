@@ -16,7 +16,7 @@ const commentsLoader = bigPicture.querySelector('.comments-loader');
 const commentsList = bigPicture.querySelector('.social__comments');
 const commentFragment = document.createDocumentFragment();
 
-const addPhotoListClickHandlers = (photoItem, {url, likes, comments, description}) => {
+const addPhotoListClickHandler = (photoItem, {url, likes, comments, description}) => {
   const openBigPicture = () => {
     bigPicture.classList.remove('hidden');
     socialCommentCount.classList.add('hidden');
@@ -61,5 +61,5 @@ const addPhotoListClickHandlers = (photoItem, {url, likes, comments, description
 };
 
 photos.forEach((photo, i) => {
-  addPhotoListClickHandlers(photo, userPhotos[i]);
+  addPhotoListClickHandler(photo, userPhotos[i]);
 });

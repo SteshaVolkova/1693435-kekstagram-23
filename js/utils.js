@@ -7,6 +7,9 @@ const getRandomPositiveInteger = (a, b) => {
   return Math.floor(result);
 };
 
+// Вычисляем длину строки
+const calculateLengthComment = (commentText, maxLengthComment) => commentText.length <= maxLengthComment;
+
 // Получение случайного числа из массива
 const getRandomArrayElement = (elements) =>
   elements[getRandomPositiveInteger(0, elements.length - 1)];
@@ -14,4 +17,4 @@ const getRandomArrayElement = (elements) =>
 
 const isEscEvent = (evt) => evt.keyCode === 27;
 
-export {getRandomPositiveInteger, getRandomArrayElement, isEscEvent};
+export {calculateLengthComment, getRandomPositiveInteger, getRandomArrayElement, isEscEvent};
