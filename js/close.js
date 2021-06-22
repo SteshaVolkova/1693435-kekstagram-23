@@ -9,7 +9,7 @@ const commentDescription = userUploadPhoto.querySelector('.text__description');
 const textHashtag = document.querySelector('.text__hashtags');
 const uploadFile = document.querySelector('#upload-file');
 
-const closeModal = () => {
+const onCloseButtonClick = () => {
   userUploadPhoto.classList.add('hidden');
   bigPicture.classList.add('hidden');
   socialCommentCount.classList.remove('hidden');
@@ -26,11 +26,11 @@ document.addEventListener('keydown', (evt) => {
     } else if(textHashtag === document.activeElement) {
       evt.stopPropagation();
     } else {
-      closeModal();
+      onCloseButtonClick();
       commentInput.value = '';
       uploadFile.value = '';
     }
   }
 });
 
-export {closeModal};
+export {onCloseButtonClick};
