@@ -13,15 +13,15 @@ const validationFormHashtag = (evt) => {
 
   if (textHashtag.value !== '') {
     const hashtags = textHashtag.value.toLowerCase().trim().split(' ').filter((hashtag) => hashtag);
+    const hashtagsSet = new Set(hashtags);
 
-    hashtags.forEach((hashtag, i) => {
+    hashtags.forEach((hashtag) => {
       if(!regexHeshtagValue.test(hashtag)) {
         textHashtag.setCustomValidity(TEXT_HASHTAG_VALIDATE);
         textHashtag.style.borderColor = ERROR_BORDER_COLOR;
         textHashtag.style.outlineColor = ERROR_BORDER_COLOR;
         evt.preventDefault();
-
-      } else if (hashtags.indexOf(hashtag) !== i) {
+      } else if (hashtags.length !== hashtagsSet.size) {
         textHashtag.setCustomValidity(HASHTAGS_NO_REPEAT);
         textHashtag.style.borderColor = ERROR_BORDER_COLOR;
         textHashtag.style.outlineColor = ERROR_BORDER_COLOR;
