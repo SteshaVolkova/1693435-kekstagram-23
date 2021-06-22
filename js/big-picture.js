@@ -1,6 +1,6 @@
 import {pictures} from './render-images.js';
 import {userPhotos} from './show-photos.js';
-import {closeModal} from './close.js';
+import {onCloseButtonClick} from './close.js';
 
 const PICTURE_SIZE = 35;
 
@@ -17,7 +17,7 @@ const commentsList = bigPicture.querySelector('.social__comments');
 const commentFragment = document.createDocumentFragment();
 
 const addPhotoListClickHandler = (photoItem, {url, likes, comments, description}) => {
-  const openBigPicture = () => {
+  const onPictureClick = () => {
     bigPicture.classList.remove('hidden');
     socialCommentCount.classList.add('hidden');
     commentsLoader.classList.add('hidden');
@@ -49,15 +49,15 @@ const addPhotoListClickHandler = (photoItem, {url, likes, comments, description}
       commentBlock.appendChild(commentText);
       commentFragment.appendChild(commentBlock);
 
-      closeButton.addEventListener('click', closeModal);
+      closeButton.addEventListener('click', onCloseButtonClick);
     });
 
     commentsList.appendChild(commentFragment);
 
   };
 
-  closeButton.removeEventListener('click', closeModal);
-  photoItem.addEventListener('click', openBigPicture);
+  closeButton.removeEventListener('click', onCloseButtonClick);
+  photoItem.addEventListener('click', onPictureClick);
 };
 
 photos.forEach((photo, i) => {
