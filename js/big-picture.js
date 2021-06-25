@@ -57,15 +57,15 @@ const addPhotoListClickHandler = (photoItem, {url, likes, comments, description}
     let commentsCounter = 0;
     let commentsCounterInex = COMMENTS_STEP;
 
-    const partComments = comments.slice(commentsCounter, commentsCounterInex);
-    listComments(partComments);
+    const slicedComments = comments.slice(commentsCounter, commentsCounterInex);
+    listComments(slicedComments);
 
     commentsLoader.addEventListener('click', () => {
       commentsCounter += COMMENTS_STEP;
       commentsCounterInex += COMMENTS_STEP;
 
-      const partTwoComments = comments.slice(commentsCounter, commentsCounterInex);
-      listComments(partTwoComments);
+      const slicedAdditionalComments = comments.slice(commentsCounter, commentsCounterInex);
+      listComments(slicedAdditionalComments);
 
       bigPictureCommentsCount.textContent = commentsList.children.length;
 
