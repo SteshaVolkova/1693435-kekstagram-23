@@ -17,7 +17,7 @@ const effectMarvin = document.querySelector('#effect-marvin');
 const effectPhobos = document.querySelector('#effect-phobos');
 const effectHeat = document.querySelector('#effect-heat');
 
-
+effectLevelSlider.classList.add('hidden');
 effectLevelValue.value = DEFAULT_EFFECT_LEVEL;
 
 noUiSlider.create(effectLevelSlider, {
@@ -28,10 +28,17 @@ noUiSlider.create(effectLevelSlider, {
   start: DEFAULT_EFFECT_LEVEL,
   step: DEFAULT_EFFECT_STEP,
   connect: 'lower',
-});
-
-effectLevelSlider.noUiSlider.on('update', (_, handle, unencoded) => {
-  effectLevelValue.value = unencoded[handle];
+  format: {
+    to: function (value) {
+      if (Number.isInteger(value)) {
+        return value.toFixed(0);
+      }
+      return value.toFixed(1);
+    },
+    from: function (value) {
+      return parseFloat(value);
+    },
+  },
 });
 
 const onNoneEffectClick = () => {
@@ -53,8 +60,8 @@ const onChromeEffectClick = () => {
     step: MAIN_STEP_VALUE,
   });
 
-  effectLevelSlider.noUiSlider.on('update', (_, handle, unencoded) => {
-    effectLevelValue.value = unencoded[handle];
+  effectLevelSlider.noUiSlider.on('update', (values, handle) => {
+    effectLevelValue.value = values[handle];
     const filterChrome = `grayscale(${effectLevelValue.value})`;
     iamgePreview.style.filter = filterChrome;
   });
@@ -74,8 +81,8 @@ const onSepiaEffectClick = () => {
     step: MAIN_STEP_VALUE,
   });
 
-  effectLevelSlider.noUiSlider.on('update', (_, handle, unencoded) => {
-    effectLevelValue.value = unencoded[handle];
+  effectLevelSlider.noUiSlider.on('update', (values, handle) => {
+    effectLevelValue.value = values[handle];
     const filterSepia = `sepia(${effectLevelValue.value})`;
     iamgePreview.style.filter = filterSepia;
   });
@@ -95,8 +102,8 @@ const onMarvinEffectClick = () => {
     step: DEFAULT_EFFECT_STEP,
   });
 
-  effectLevelSlider.noUiSlider.on('update', (_, handle, unencoded) => {
-    effectLevelValue.value = unencoded[handle];
+  effectLevelSlider.noUiSlider.on('update', (values, handle) => {
+    effectLevelValue.value = values[handle];
     const filterMarvin = `invert(${effectLevelValue.value}%)`;
     iamgePreview.style.filter = filterMarvin;
   });
@@ -116,8 +123,8 @@ const onPhobosEffectClick = () => {
     step: MAIN_STEP_VALUE,
   });
 
-  effectLevelSlider.noUiSlider.on('update', (_, handle, unencoded) => {
-    effectLevelValue.value = unencoded[handle];
+  effectLevelSlider.noUiSlider.on('update', (values, handle) => {
+    effectLevelValue.value = values[handle];
     const filterPhobos = `blur(${effectLevelValue.value}px)`;
     iamgePreview.style.filter = filterPhobos;
   });
@@ -137,8 +144,8 @@ const onHeatEffectClick = () => {
     step: MAIN_STEP_VALUE,
   });
 
-  effectLevelSlider.noUiSlider.on('update', (_, handle, unencoded) => {
-    effectLevelValue.value = unencoded[handle];
+  effectLevelSlider.noUiSlider.on('update', (values, handle) => {
+    effectLevelValue.value = values[handle];
     const filterHeat = `brightness(${effectLevelValue.value})`;
     iamgePreview.style.filter = filterHeat;
   });
