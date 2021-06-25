@@ -4,7 +4,7 @@ import {getRandomPositiveInteger} from './utils.js';
 const USER_PHOTO_QUANTITY = 25;
 const MIN_LIKES_QUANTI = 15;
 const MAX_LIKES_QUANTITY = 200;
-const MAX_COMMENT_QUANTITY = 5;
+const MAX_COMMENT_QUANTITY = 15;
 
 const USER_DESCRIPTIONS = [
   'Hppyness...',
