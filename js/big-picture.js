@@ -31,7 +31,7 @@ const addPhotoListClickHandler = (photoItem, {url, likes, comments, description}
 
     commentsList.innerHTML = '';
 
-    const addCommentToList = (comment) => {
+    const listComments = (comment) => {
       comment.forEach(({avatar, name, message}) => {
         const commentBlock = document.createElement('li');
         const commentPicture = document.createElement('img');
@@ -57,15 +57,15 @@ const addPhotoListClickHandler = (photoItem, {url, likes, comments, description}
     let commentsCounter = 0;
     let commentsCounterInex = COMMENTS_STEP;
 
-    const sliceComments = comments.slice(commentsCounter, commentsCounterInex);
-    addCommentToList(sliceComments);
+    const partComments = comments.slice(commentsCounter, commentsCounterInex);
+    listComments(partComments);
 
     commentsLoader.addEventListener('click', () => {
       commentsCounter += COMMENTS_STEP;
       commentsCounterInex += COMMENTS_STEP;
 
-      const sliceAdditionalComments = comments.slice(commentsCounter, commentsCounterInex);
-      addCommentToList(sliceAdditionalComments);
+      const partTwoComments = comments.slice(commentsCounter, commentsCounterInex);
+      listComments(partTwoComments);
 
       bigPictureCommentsCount.textContent = commentsList.children.length;
 
