@@ -11,9 +11,9 @@ const scaleValue = document.querySelector('.scale__control--value');
 let scaleAditionalValue = MAX_SCALE_VALUE;
 scaleValue.value = `${scaleAditionalValue  }%`;
 
-const onMinusButtonClick = () => {
-  if (scaleAditionalValue > MIN_SCALE_VALUE) {
-    scaleAditionalValue = scaleAditionalValue - SCALE_VALUE_STEP;
+const rescalePhoto = (comparsion, expression) => {
+  if (comparsion) {
+    scaleAditionalValue = expression;
     scaleValue.value = `${scaleAditionalValue  }%`;
 
     const transformValue = `scale(${  scaleAditionalValue * MAX_SCALE_VALUE_PERCENT  })`;
@@ -21,14 +21,12 @@ const onMinusButtonClick = () => {
   }
 };
 
-const onPlusButtonClick = () => {
-  if (scaleAditionalValue < MAX_SCALE_VALUE) {
-    scaleAditionalValue = scaleAditionalValue + SCALE_VALUE_STEP;
-    scaleValue.value = `${scaleAditionalValue  }%`;
+const onMinusButtonClick = () => {
+  rescalePhoto(scaleAditionalValue > MIN_SCALE_VALUE, scaleAditionalValue - SCALE_VALUE_STEP);
+};
 
-    const transformValue = `scale(${  scaleAditionalValue * MAX_SCALE_VALUE_PERCENT  })`;
-    imagePreview.style.transform = transformValue;
-  }
+const onPlusButtonClick = () => {
+  rescalePhoto(scaleAditionalValue < MAX_SCALE_VALUE, scaleAditionalValue + SCALE_VALUE_STEP);
 };
 
 scaleSmaller.addEventListener('click', onMinusButtonClick);
