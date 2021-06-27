@@ -65,6 +65,12 @@ const changeEffectSliderValue = (minRangeValue, maxRangeValue, sliderStep) => {
 // Добавляю массив, чтобы в дальнейшем убирать класс прошлого фильтра у картинки
 const classes = iamgePreview.className.split(' ').filter((c) => !c.startsWith(effectStartClassName));
 
+const addDesiredClass = (desiredClass) => {
+  effectLevelSlider.classList.remove('hidden');
+  iamgePreview.className = classes.join(' ').trim();
+  iamgePreview.classList.add(desiredClass);
+};
+
 const onNoneEffectClick = () => {
   effectLevelSlider.classList.add('hidden');
   iamgePreview.className = classes.join(' ').trim();
@@ -72,46 +78,31 @@ const onNoneEffectClick = () => {
 };
 
 const onChromeEffectClick = () => {
-  effectLevelSlider.classList.remove('hidden');
-  iamgePreview.className = classes.join(' ').trim();
-  iamgePreview.classList.add('effects__preview--chrome');
-
+  addDesiredClass('effects__preview--chrome');
   changeEffectSliderValue(MIN_RANGE_VALUE, MAIN_MAX_VALUE, MAIN_STEP_VALUE);
   chabgeEffectWidthSlider('grayscale', '');
 };
 
 const onSepiaEffectClick = () => {
-  effectLevelSlider.classList.remove('hidden');
-  iamgePreview.className = classes.join(' ').trim();
-  iamgePreview.classList.add('effects__preview--sepia');
-
+  addDesiredClass('effects__preview--sepia');
   changeEffectSliderValue(MIN_RANGE_VALUE, MAIN_MAX_VALUE, MAIN_STEP_VALUE);
   chabgeEffectWidthSlider('sepia', '');
 };
 
 const onMarvinEffectClick = () => {
-  effectLevelSlider.classList.remove('hidden');
-  iamgePreview.className = classes.join(' ').trim();
-  iamgePreview.classList.add('effects__preview--marvin');
-
+  addDesiredClass('effects__preview--marvin');
   changeEffectSliderValue(MIN_RANGE_VALUE, DEFAULT_EFFECT_LEVEL, DEFAULT_EFFECT_STEP);
   chabgeEffectWidthSlider('invert', '%');
 };
 
 const onPhobosEffectClick = () => {
-  effectLevelSlider.classList.remove('hidden');
-  iamgePreview.className = classes.join(' ').trim();
-  iamgePreview.classList.add('effects__preview--phobos');
-
+  addDesiredClass('effects__preview--phobos');
   changeEffectSliderValue(MIN_RANGE_VALUE, ADDITIONAL_MAX_VALUE, MAIN_STEP_VALUE);
   chabgeEffectWidthSlider('blur', 'px');
 };
 
 const onHeatEffectClick = () => {
-  effectLevelSlider.classList.remove('hidden');
-  iamgePreview.className = classes.join(' ').trim();
-  iamgePreview.classList.add('effects__preview--heat');
-
+  addDesiredClass('effects__preview--heat');
   changeEffectSliderValue(MAIN_MAX_VALUE, ADDITIONAL_MAX_VALUE, MAIN_STEP_VALUE);
   chabgeEffectWidthSlider('brightness', '');
 };
