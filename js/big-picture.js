@@ -1,11 +1,9 @@
 import {pictures} from './render-images.js';
-import {userPhotos} from './show-photos.js';
 import {onCloseButtonClick} from './close.js';
 
 const PICTURE_SIZE = 35;
 const COMMENTS_STEP = 5;
 
-const photos = pictures.querySelectorAll('.picture');
 const bigPicture = document.querySelector('.big-picture');
 const closeButton = bigPicture.querySelector('.big-picture__cancel');
 const bigPictureImage = bigPicture.querySelector('img');
@@ -18,9 +16,9 @@ const commentsLoader = bigPicture.querySelector('.comments-loader');
 const commentsList = bigPicture.querySelector('.social__comments');
 const commentFragment = document.createDocumentFragment();
 
-
 const addPhotoListClickHandler = (photoItem, {url, likes, comments, description}) => {
-  const onPictureClick = () => {
+  const onPictureClick = (evt) => {
+    evt.preventDefault();
     bigPicture.classList.remove('hidden');
     document.body.classList.add('modal-open');
 
@@ -91,6 +89,12 @@ const addPhotoListClickHandler = (photoItem, {url, likes, comments, description}
   photoItem.addEventListener('click', onPictureClick);
 };
 
-photos.forEach((photo, i) => {
-  addPhotoListClickHandler(photo, userPhotos[i]);
-});
+const addBigPhotoComments = (userPhotoList) => {
+  const photos = pictures.querySelectorAll('.picture');
+
+  photos.forEach((photo, i) => {
+    addPhotoListClickHandler(photo, userPhotoList[i]);
+  });
+};
+
+export {addBigPhotoComments};

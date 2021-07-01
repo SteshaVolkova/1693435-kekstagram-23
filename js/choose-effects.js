@@ -10,6 +10,7 @@ const iamgePreview = iamgeUploadPreview.querySelector('img');
 const effectLevelValue = document.querySelector('.effect-level__value');
 const effectLevelSlider = document.querySelector('.effect-level__slider');
 const effectStartClassName = 'effects__preview';
+const classes = iamgePreview.className.split(' ').filter((c) => !c.startsWith(effectStartClassName));
 
 const effectNone = document.querySelector('#effect-none');
 const effectChrome = document.querySelector('#effect-chrome');
@@ -41,17 +42,11 @@ noUiSlider.create(effectLevelSlider, {
 });
 
 
-// Добавляю стиль картинке и записываю значение ползунка в effectLevelValue.value
-const chabgeEffectWidthSlider = (filterStyle, filerMeasure) => {
-  effectLevelSlider.noUiSlider.on('update', (values, handle) => {
-    effectLevelValue.value = values[handle];
-    const filterFilterStyle = `${filterStyle  }(${effectLevelValue.value}${  filerMeasure  })`;
-    iamgePreview.style.filter = filterFilterStyle;
-  });
-};
+const chabgeImageEffect = (desiredClass, minRangeValue, maxRangeValue, sliderStep, filterStyle, filerMeasure) => {
+  effectLevelSlider.classList.remove('hidden');
+  iamgePreview.className = classes.join(' ').trim();
+  iamgePreview.classList.add(desiredClass);
 
-// Изменю значения границ и шага ползунка
-const changeEffectSliderValue = (minRangeValue, maxRangeValue, sliderStep) => {
   effectLevelSlider.noUiSlider.updateOptions({
     range: {
       min: minRangeValue,
@@ -60,15 +55,12 @@ const changeEffectSliderValue = (minRangeValue, maxRangeValue, sliderStep) => {
     start: maxRangeValue,
     step: sliderStep,
   });
-};
 
-// Добавляю массив, чтобы в дальнейшем убирать класс прошлого фильтра у картинки
-const classes = iamgePreview.className.split(' ').filter((c) => !c.startsWith(effectStartClassName));
-
-const addDesiredClass = (desiredClass) => {
-  effectLevelSlider.classList.remove('hidden');
-  iamgePreview.className = classes.join(' ').trim();
-  iamgePreview.classList.add(desiredClass);
+  effectLevelSlider.noUiSlider.on('update', (values, handle) => {
+    effectLevelValue.value = values[handle];
+    const filterFilterStyle = `${filterStyle  }(${effectLevelValue.value}${  filerMeasure  })`;
+    iamgePreview.style.filter = filterFilterStyle;
+  });
 };
 
 const onNoneEffectClick = () => {
@@ -78,33 +70,23 @@ const onNoneEffectClick = () => {
 };
 
 const onChromeEffectClick = () => {
-  addDesiredClass('effects__preview--chrome');
-  changeEffectSliderValue(MIN_RANGE_VALUE, MAIN_MAX_VALUE, MAIN_STEP_VALUE);
-  chabgeEffectWidthSlider('grayscale', '');
+  chabgeImageEffect('effects__preview--chrome', MIN_RANGE_VALUE, MAIN_MAX_VALUE, MAIN_STEP_VALUE, 'grayscale', '');
 };
 
 const onSepiaEffectClick = () => {
-  addDesiredClass('effects__preview--sepia');
-  changeEffectSliderValue(MIN_RANGE_VALUE, MAIN_MAX_VALUE, MAIN_STEP_VALUE);
-  chabgeEffectWidthSlider('sepia', '');
+  chabgeImageEffect('effects__preview--sepia', MIN_RANGE_VALUE, MAIN_MAX_VALUE, MAIN_STEP_VALUE, 'sepia', '');
 };
 
 const onMarvinEffectClick = () => {
-  addDesiredClass('effects__preview--marvin');
-  changeEffectSliderValue(MIN_RANGE_VALUE, DEFAULT_EFFECT_LEVEL, DEFAULT_EFFECT_STEP);
-  chabgeEffectWidthSlider('invert', '%');
+  chabgeImageEffect('effects__preview--marvin', MIN_RANGE_VALUE, DEFAULT_EFFECT_LEVEL, DEFAULT_EFFECT_STEP, 'invert', '%');
 };
 
 const onPhobosEffectClick = () => {
-  addDesiredClass('effects__preview--phobos');
-  changeEffectSliderValue(MIN_RANGE_VALUE, ADDITIONAL_MAX_VALUE, MAIN_STEP_VALUE);
-  chabgeEffectWidthSlider('blur', 'px');
+  chabgeImageEffect('effects__preview--phobos', MIN_RANGE_VALUE, ADDITIONAL_MAX_VALUE, MAIN_STEP_VALUE, 'blur', 'px');
 };
 
 const onHeatEffectClick = () => {
-  addDesiredClass('effects__preview--heat');
-  changeEffectSliderValue(MAIN_MAX_VALUE, ADDITIONAL_MAX_VALUE, MAIN_STEP_VALUE);
-  chabgeEffectWidthSlider('brightness', '');
+  chabgeImageEffect('effects__preview--heat', MAIN_MAX_VALUE, ADDITIONAL_MAX_VALUE, MAIN_STEP_VALUE, 'brightness', '');
 };
 
 
