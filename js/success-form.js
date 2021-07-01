@@ -1,4 +1,4 @@
-import {isEscEvent} from './utils.js';
+import {closeMessageModal} from './close.js';
 
 const MAX_SCALE_VALUE = 100;
 const MAX_SCALE_VALUE_PERCENT = 0.01;
@@ -45,21 +45,8 @@ const onFormSuccessSend = () => {
     const successInnerTemplate = successUploadImageTemplate.querySelector('.success__inner');
     successFragment.appendChild(successUploadImageTemplate);
     document.body.appendChild(successFragment);
-    successButtonTemplate.addEventListener('click', () => {
-      successUploadImageTemplate.remove();
-    });
-    document.addEventListener('keydown', (evt) => {
-      if (isEscEvent(evt)) {
-        successUploadImageTemplate.remove();
-      }
-    });
-    successUploadImageTemplate.addEventListener('click', (evt) => {
-      const isClickInside = successInnerTemplate.contains(evt.target);
 
-      if (!isClickInside) {
-        successUploadImageTemplate.remove();
-      }
-    });
+    closeMessageModal(successUploadImageTemplate, successButtonTemplate, successInnerTemplate);
   };
 
   showSuccessMessage();

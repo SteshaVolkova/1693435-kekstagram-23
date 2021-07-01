@@ -1,4 +1,4 @@
-import {isEscEvent} from './utils.js';
+import {closeMessageModal} from './close.js';
 
 const ERROR_GET_MESSAGE ='Что-то пошло не так, не переживайте, скоро все исправим!';
 const ERROR_GET_BUTTON ='Хорошо';
@@ -17,21 +17,8 @@ const getErrorData = () => {
 
     errorFragment.appendChild(errorGetImageTemplate);
     document.body.appendChild(errorFragment);
-    errorButtonTemplate.addEventListener('click', () => {
-      errorGetImageTemplate.remove();
-    });
-    document.addEventListener('keydown', (evt) => {
-      if (isEscEvent(evt)) {
-        errorGetImageTemplate.remove();
-      }
-    });
-    errorGetImageTemplate.addEventListener('click', (evt) => {
-      const isClickInside = errorInnerTemplate.contains(evt.target);
 
-      if (!isClickInside) {
-        errorGetImageTemplate.remove();
-      }
-    });
+    closeMessageModal(errorGetImageTemplate, errorButtonTemplate, errorInnerTemplate);
   };
 
   showErrorMessage();

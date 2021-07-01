@@ -52,4 +52,22 @@ document.addEventListener('keydown', (evt) => {
   }
 });
 
-export {onCloseButtonClick};
+const closeMessageModal = (messageTemplate, messageCloseButton, messageInner) => {
+  messageCloseButton.addEventListener('click', () => {
+    messageTemplate.remove();
+  });
+  document.addEventListener('keydown', (evt) => {
+    if (isEscEvent(evt)) {
+      messageTemplate.remove();
+    }
+  });
+  messageTemplate.addEventListener('click', (evt) => {
+    const isClickInside = messageInner.contains(evt.target);
+
+    if (!isClickInside) {
+      messageTemplate.remove();
+    }
+  });
+};
+
+export {onCloseButtonClick, closeMessageModal};
