@@ -1,9 +1,11 @@
-import {closeMessageModal} from './close.js';
+import {onCloseButtonClick, closeMessageModal} from './close.js';
 
 const errorUploadImage = document.querySelector('#error').content.querySelector('section');
 const errorFragment = document.createDocumentFragment();
 
 const onFormErrorSend = () => {
+
+  onCloseButtonClick();
 
   const showErrorMessage = () => {
     const errorUploadImageTemplate = errorUploadImage.cloneNode(true);

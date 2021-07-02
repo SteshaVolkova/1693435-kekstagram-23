@@ -1,7 +1,7 @@
 import {closeMessageModal} from './close.js';
 
-const ERROR_GET_MESSAGE ='Что-то пошло не так, не переживайте, скоро все исправим!';
-const ERROR_GET_BUTTON ='Хорошо';
+const ERROR_GET_MESSAGE ='Упс, фото не подгрузились!';
+const ERROR_GET_BUTTON ='Жду';
 const errorGetImage = document.querySelector('#error').content.querySelector('section');
 const errorFragment = document.createDocumentFragment();
 
