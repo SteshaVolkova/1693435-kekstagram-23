@@ -15,6 +15,10 @@ const getRandomArrayElement = (elements) =>
   elements[getRandomPositiveInteger(0, elements.length - 1)];
 
 
+// Сортировка объектов массива по имени ключа объекта (по возрастанию)
+// Подсказку нашла тут (https://learn.javascript.ru/task/sort-by-field)
+const sortByField = (field) => (a, b) => a[field] > b[field] ? 1 : -1;
+
 const isEscEvent = (evt) => evt.keyCode === 27;
 
-export {calculateLengthComment, getRandomPositiveInteger, getRandomArrayElement, isEscEvent};
+export {calculateLengthComment, getRandomPositiveInteger, getRandomArrayElement, sortByField, isEscEvent};

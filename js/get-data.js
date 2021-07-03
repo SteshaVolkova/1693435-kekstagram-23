@@ -1,4 +1,5 @@
 import {renderSimilarPhoto} from './render-images.js';
+import {renderPhotoFilter} from './filter-photos.js';
 import {addBigPhotoComments} from './big-picture.js';
 import {getErrorData} from './error-get-data.js';
 
@@ -9,6 +10,7 @@ const getUserPhotos = (onError) => {
     .then((response) => response.json())
     .then((userPhotos) => {
       renderSimilarPhoto(userPhotos);
+      renderPhotoFilter(userPhotos);
       addBigPhotoComments(userPhotos);
     })
     .catch(() => onError());
