@@ -4,6 +4,8 @@ import {addBigPhotoComments} from './big-picture.js';
 import {debounce} from './debounce.js';
 
 const RERENDER_DELAY = 500;
+const RANDOM_PHOTOS_LENGTH = 10;
+const SORT_MATH_RANDOM = 0.5;
 
 const picturesContainer = document.querySelector('.pictures');
 const imgFilters = document.querySelector('.img-filters');
@@ -44,8 +46,8 @@ const renderPhotoFilter = (userPhotos) => {
   imgFilterRandom.addEventListener('click', () => {
     applyFilterImages(imgFilterRandom);
 
-    const randomPhotos = userPhotos.sort(() => Math.random() - 0.5);
-    const slicedRandomPhotos = randomPhotos.slice(0, 10);
+    const randomPhotos = userPhotos.sort(() => Math.random() - SORT_MATH_RANDOM);
+    const slicedRandomPhotos = randomPhotos.slice(0, RANDOM_PHOTOS_LENGTH);
 
     renderFilteredPhotoList(slicedRandomPhotos);
   });
