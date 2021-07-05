@@ -7,6 +7,7 @@ import './error-send.js';
 import './filter-photos.js';
 import './hashtag.js';
 import './post-form.js';
+import './put-photo.js';
 import './rescale-photo.js';
 import './render-images.js';
 import './get-data.js';
