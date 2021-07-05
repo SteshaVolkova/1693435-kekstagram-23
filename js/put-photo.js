@@ -9,9 +9,9 @@ fileChooser.addEventListener('change', () => {
   const file = fileChooser.files[0];
   const fileName = file.name.toLowerCase();
 
-  const checkFileFormat = FILE_TYPES.some((it) => fileName.endsWith(it));
+  const isMatch = FILE_TYPES.some((it) => fileName.endsWith(it));
 
-  if (checkFileFormat) {
+  if (isMatch) {
     const reader = new FileReader();
 
     reader.addEventListener('load', () => preview.src = reader.result);
