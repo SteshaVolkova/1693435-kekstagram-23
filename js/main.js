@@ -11,5 +11,4 @@ import './rescale-photo.js';
 import './render-images.js';
 import './get-data.js';
 import './success-form.js';
-import './show-filters.js';
 import './utils.js';

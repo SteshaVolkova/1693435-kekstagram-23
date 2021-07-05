@@ -14,7 +14,19 @@ const calculateLengthComment = (commentText, maxLengthComment) => commentText.le
 const getRandomArrayElement = (elements) =>
   elements[getRandomPositiveInteger(0, elements.length - 1)];
 
+// Алгоритм под названием Тасование Фишера — Йетса.
+// Пример взят c https://learn.javascript.ru/task/shuffle
+const shuffle = (array) => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]];
+  }
+};
+
+// Сортировка объектов массива по имени ключа объекта (по возрастанию)
+// Подсказку нашла тут (https://learn.javascript.ru/task/sort-by-field)
+const sortByField = (field) => (a, b) => a[field] > b[field] ? 1 : -1;
 
 const isEscEvent = (evt) => evt.keyCode === 27;
 
-export {calculateLengthComment, getRandomPositiveInteger, getRandomArrayElement, isEscEvent};
+export {calculateLengthComment, getRandomPositiveInteger, getRandomArrayElement, shuffle, sortByField, isEscEvent};
