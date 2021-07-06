@@ -1,3 +1,5 @@
+const ESCAPE_BUTTON_NUMBER = 27;
+
 // Функция для получения случайного числа из указанного интервала.
 // Решила использовать функцию Кекса :) Она более краткая и понятная.
 const getRandomPositiveInteger = (a, b) => {
@@ -28,6 +30,6 @@ const shuffle = (array) => {
 const sortByField = (field) => (a, b) => a[field] > b[field] ? 1 : -1;
 
 // Проверка нажатия на кнопку Esc
-const isEscEvent = (evt) => evt.keyCode === 27;
+const isEscEvent = (evt) => evt.keyCode === ESCAPE_BUTTON_NUMBER;
 
 export {calculateLengthComment, getRandomPositiveInteger, getRandomArrayElement, shuffle, sortByField, isEscEvent};
