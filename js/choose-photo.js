@@ -9,5 +9,6 @@ const uploadUserPhoto = () => {
   document.body.classList.add('modal-open');
   closeUploadFile.addEventListener('click', onCloseButtonClick);
 };
+closeUploadFile.removeEventListener('click', onCloseButtonClick);
 
 uploadFile.addEventListener('change', uploadUserPhoto);

@@ -10,7 +10,7 @@ const iamgePreview = iamgeUploadPreview.querySelector('img');
 const effectLevelValue = document.querySelector('.effect-level__value');
 const effectLevelSlider = document.querySelector('.effect-level__slider');
 const effectStartClassName = 'effects__preview';
-const classes = iamgePreview.className.split(' ').filter((c) => !c.startsWith(effectStartClassName));
+const defaultEffect = iamgePreview.className.split(' ').filter((c) => !c.startsWith(effectStartClassName));
 
 const effectNone = document.querySelector('#effect-none');
 const effectChrome = document.querySelector('#effect-chrome');
@@ -39,7 +39,7 @@ noUiSlider.create(effectLevelSlider, {
 
 const chabgeImageEffect = (desiredClass, minRangeValue, maxRangeValue, sliderStep, filterStyle, filerMeasure) => {
   effectLevelSlider.classList.remove('hidden');
-  iamgePreview.className = classes.join(' ').trim();
+  iamgePreview.className = defaultEffect.join(' ').trim();
   iamgePreview.classList.add(desiredClass);
 
   effectLevelSlider.noUiSlider.updateOptions({
@@ -60,7 +60,7 @@ const chabgeImageEffect = (desiredClass, minRangeValue, maxRangeValue, sliderSte
 
 const onNoneEffectClick = () => {
   effectLevelSlider.classList.add('hidden');
-  iamgePreview.className = classes.join(' ').trim();
+  iamgePreview.className = defaultEffect.join(' ').trim();
   iamgePreview.style.filter = 'none';
 };
 

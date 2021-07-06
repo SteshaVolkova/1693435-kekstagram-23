@@ -7,11 +7,11 @@ const RERENDER_DELAY = 500;
 const RANDOM_PHOTOS_LENGTH = 10;
 
 const picturesContainer = document.querySelector('.pictures');
-const imgFilters = document.querySelector('.img-filters');
-const imgFilterButtons = imgFilters.querySelectorAll('.img-filters__button');
-const imgFilterDefault = imgFilters.querySelector('#filter-default');
-const imgFilterRandom = imgFilters.querySelector('#filter-random');
-const imgFilterDiscussed = imgFilters.querySelector('#filter-discussed');
+const imgFilter = document.querySelector('.img-filters');
+const imgFilterButtons = imgFilter.querySelectorAll('.img-filters__button');
+const imgFilterDefault = imgFilter.querySelector('#filter-default');
+const imgFilterRandom = imgFilter.querySelector('#filter-random');
+const imgFilterDiscussed = imgFilter.querySelector('#filter-discussed');
 
 const applyFilterImages = (filterButton) => {
   imgFilterButtons.forEach((imgFilterButton) => {
