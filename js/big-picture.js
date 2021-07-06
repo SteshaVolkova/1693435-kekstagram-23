@@ -7,8 +7,8 @@ const COMMENTS_STEP = 5;
 const bigPicture = document.querySelector('.big-picture');
 const closeButton = bigPicture.querySelector('.big-picture__cancel');
 const bigPictureImage = bigPicture.querySelector('img');
-const bigPictureLikes = bigPicture.querySelector('.likes-count');
-const bigPictureComments = bigPicture.querySelector('.comments-count');
+const bigPictureLikesField = bigPicture.querySelector('.likes-count');
+const bigPictureCommentsField = bigPicture.querySelector('.comments-count');
 const bigPictureCommentsCount = bigPicture.querySelector('.current-comments-count');
 const bigPictureDescription = bigPicture.querySelector('.social__caption');
 const socialCommentCount = bigPicture.querySelector('.social__comment-count');
@@ -23,8 +23,8 @@ const addPhotoListClickHandler = (photoItem, {url, likes, comments, description}
     document.body.classList.add('modal-open');
 
     bigPictureImage.src = url;
-    bigPictureLikes.textContent = likes;
-    bigPictureComments.textContent = comments.length;
+    bigPictureLikesField.textContent = likes;
+    bigPictureCommentsField.textContent = comments.length;
     bigPictureDescription.textContent = description;
 
     commentsList.innerHTML = '';

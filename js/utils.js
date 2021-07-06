@@ -27,6 +27,7 @@ const shuffle = (array) => {
 // Подсказку нашла тут (https://learn.javascript.ru/task/sort-by-field)
 const sortByField = (field) => (a, b) => a[field] > b[field] ? 1 : -1;
 
+// Проверка нажатия на кнопку Esc
 const isEscEvent = (evt) => evt.keyCode === 27;
 
 export {calculateLengthComment, getRandomPositiveInteger, getRandomArrayElement, shuffle, sortByField, isEscEvent};

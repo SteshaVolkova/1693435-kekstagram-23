@@ -15,7 +15,7 @@ const effectLevelSlider = document.querySelector('.effect-level__slider');
 const iamgeUploadPreview = document.querySelector('.img-upload__preview');
 const iamgePreviewPicture = iamgeUploadPreview.querySelector('img');
 const effectStartClassName = 'effects__preview';
-const classes = iamgePreviewPicture.className.split(' ').filter((c) => !c.startsWith(effectStartClassName));
+const selectedEffectClass = iamgePreviewPicture.className.split(' ').filter((c) => !c.startsWith(effectStartClassName));
 const defaultEffect = document.querySelector('#effect-none');
 
 const onCloseButtonClick = () => {
@@ -33,7 +33,7 @@ const onCloseButtonClick = () => {
   imagePreview.style.transform = transformValue;
 
   effectLevelSlider.classList.add('hidden');
-  iamgePreviewPicture.className = classes.join(' ').trim();
+  iamgePreviewPicture.className = selectedEffectClass.join(' ').trim();
   iamgePreviewPicture.style.filter = 'none';
   defaultEffect.checked = 'true';
 };

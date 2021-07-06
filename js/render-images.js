@@ -3,7 +3,6 @@ const pictureTemplateFragment = document.querySelector('#picture').content.query
 const pictureFragment = document.createDocumentFragment();
 const imgFilters = document.querySelector('.img-filters');
 
-
 const renderSimilarPhoto = (userPhotos) => {
   userPhotos.forEach(({ url, likes, comments }) => {
     const element = pictureTemplateFragment.cloneNode(true);
