@@ -16,8 +16,7 @@ const rescalePhoto = (comparsion, expression) => {
     scaleAditionalValue = expression;
     scaleValue.value = `${scaleAditionalValue  }%`;
 
-    const transformValue = `scale(${  scaleAditionalValue * MAX_SCALE_VALUE_PERCENT  })`;
-    imagePreview.style.transform = transformValue;
+    imagePreview.style.transform = `scale(${  scaleAditionalValue * MAX_SCALE_VALUE_PERCENT  })`;
   }
 };
 
