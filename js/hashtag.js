@@ -9,7 +9,7 @@ const regexHeshtagValue = /^#[A-za-zА-Яа-я0-9]{1,19}$/;
 const textHashtag = document.querySelector('.text__hashtags');
 
 
-const validationFormHashtag = (evt) => {
+const formHashtagCheckHandler = (evt) => {
 
   if (textHashtag.value !== '') {
     const hashtags = textHashtag.value.toLowerCase().trim().split(' ').filter((hashtag) => hashtag);
@@ -42,4 +42,4 @@ const validationFormHashtag = (evt) => {
 };
 
 
-textHashtag.addEventListener('input', validationFormHashtag);
+textHashtag.addEventListener('input', formHashtagCheckHandler);

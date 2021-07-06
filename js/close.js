@@ -37,17 +37,21 @@ const onCloseButtonClick = () => {
   defaultEffect.checked = 'true';
 };
 
+const closeModalByButton = (evt) => {
+  if(commentDescription === document.activeElement) {
+    evt.stopPropagation();
+  } else if(textHashtag === document.activeElement) {
+    evt.stopPropagation();
+  } else {
+    onCloseButtonClick();
+    commentInput.value = '';
+    uploadFile.value = '';
+  }
+};
+
 document.addEventListener('keydown', (evt) => {
   if (isEscEvent(evt)) {
-    if(commentDescription === document.activeElement) {
-      evt.stopPropagation();
-    } else if(textHashtag === document.activeElement) {
-      evt.stopPropagation();
-    } else {
-      onCloseButtonClick();
-      commentInput.value = '';
-      uploadFile.value = '';
-    }
+    closeModalByButton(evt);
   }
 });
 
@@ -67,6 +71,11 @@ const closeMessageModal = (messageTemplate, messageCloseButton, messageInner) =>
       messageTemplate.remove();
     }
   });
+  document.removeEventListener('keydown', (evt) => {
+    if (isEscEvent(evt)) {
+      messageTemplate.remove();
+    }
+  });
 };
 
-export {onCloseButtonClick, closeMessageModal};
+export {onCloseButtonClick, closeModalByButton, closeMessageModal};

@@ -18,10 +18,10 @@ const getRandomArrayElement = (elements) =>
 
 // Алгоритм под названием Тасование Фишера — Йетса.
 // Пример взят c https://learn.javascript.ru/task/shuffle
-const shuffle = (array) => {
-  for (let i = array.length - 1; i > 0; i--) {
+const shuffle = (arrayItems) => {
+  for (let i = arrayItems.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+    [arrayItems[i], arrayItems[j]] = [arrayItems[j], arrayItems[i]];
   }
 };
 
