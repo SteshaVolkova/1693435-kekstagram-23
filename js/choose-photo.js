@@ -1,4 +1,4 @@
-import {onCloseButtonClick, closeModalByButton} from './close.js';
+import {onCloseButtonClick, onEscButtonClick} from './close.js';
 import {isEscEvent} from './utils.js';
 
 const userUploadPhoto = document.querySelector('.img-upload__overlay');
@@ -14,7 +14,7 @@ closeUploadFile.removeEventListener('click', onCloseButtonClick);
 
 document.removeEventListener('keydown', (evt) => {
   if (isEscEvent(evt)) {
-    closeModalByButton(evt);
+    onEscButtonClick(evt);
   }
 });
 

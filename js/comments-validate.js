@@ -7,7 +7,7 @@ const DEFAULT_BORDER_COLOR = 'black';
 const userUploadPhoto = document.querySelector('.img-upload__overlay');
 const commentDescription = userUploadPhoto.querySelector('.text__description');
 
-const formDescriptionCheckHandler = (evt) => {
+const onFormDescriptionCheck = (evt) => {
   const textDescriptionLength = calculateLengthComment(commentDescription.value, MAX_QUANTITY_SYMBOL);
 
   if(!textDescriptionLength) {
@@ -24,4 +24,4 @@ const formDescriptionCheckHandler = (evt) => {
   commentDescription.reportValidity();
 };
 
-commentDescription.addEventListener('input', formDescriptionCheckHandler);
+commentDescription.addEventListener('input', onFormDescriptionCheck);

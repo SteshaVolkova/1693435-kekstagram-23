@@ -1,5 +1,5 @@
 import {pictures} from './render-images.js';
-import {onCloseButtonClick, closeModalByButton} from './close.js';
+import {onCloseButtonClick, onEscButtonClick} from './close.js';
 import {isEscEvent} from './utils.js';
 
 const PICTURE_SIZE = 35;
@@ -91,7 +91,7 @@ const addPhotoListClickHandler = (photoItem, {url, likes, comments, description}
 
   document.removeEventListener('keydown', (evt) => {
     if (isEscEvent(evt)) {
-      closeModalByButton(evt);
+      onEscButtonClick(evt);
     }
   });
 };

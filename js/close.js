@@ -2,6 +2,7 @@ import {isEscEvent} from './utils.js';
 
 const MAX_SCALE_VALUE = 100;
 const MAX_SCALE_VALUE_PERCENT = 0.01;
+const DEFAULT_BORDER_COLOR = 'black';
 
 const bigPicture = document.querySelector('.big-picture');
 const commentInput = bigPicture.querySelector('.social__footer-text');
@@ -25,6 +26,8 @@ const onCloseButtonClick = () => {
   commentInput.value = '';
   uploadFile.value = '';
   commentDescription.value = '';
+  commentDescription.style.borderColor = DEFAULT_BORDER_COLOR;
+  commentDescription.style.outlineColor = DEFAULT_BORDER_COLOR;
   textHashtag.value = '';
 
   const scaleAditionalValue = MAX_SCALE_VALUE;
@@ -37,45 +40,86 @@ const onCloseButtonClick = () => {
   defaultEffect.checked = 'true';
 };
 
-const closeModalByButton = (evt) => {
-  if(commentDescription === document.activeElement) {
-    evt.stopPropagation();
-  } else if(textHashtag === document.activeElement) {
-    evt.stopPropagation();
-  } else {
-    onCloseButtonClick();
-    commentInput.value = '';
-    uploadFile.value = '';
-  }
-};
-
-document.addEventListener('keydown', (evt) => {
+const onEscButtonClick = (evt) => {
   if (isEscEvent(evt)) {
-    closeModalByButton(evt);
+    if(commentDescription === document.activeElement) {
+      evt.stopPropagation();
+    } else if(textHashtag === document.activeElement) {
+      evt.stopPropagation();
+    } else {
+      onCloseButtonClick();
+      commentInput.value = '';
+      uploadFile.value = '';
+    }
   }
-});
-
-const closeMessageModal = (messageTemplate, messageCloseButton, messageInner) => {
-  messageCloseButton.addEventListener('click', () => {
-    messageTemplate.remove();
-  });
-  document.addEventListener('keydown', (evt) => {
-    if (isEscEvent(evt)) {
-      messageTemplate.remove();
-    }
-  });
-  messageTemplate.addEventListener('click', (evt) => {
-    const isClickInside = messageInner.contains(evt.target);
-
-    if (!isClickInside) {
-      messageTemplate.remove();
-    }
-  });
-  document.removeEventListener('keydown', (evt) => {
-    if (isEscEvent(evt)) {
-      messageTemplate.remove();
-    }
-  });
 };
 
-export {onCloseButtonClick, closeModalByButton, closeMessageModal};
+document.addEventListener('keydown', onEscButtonClick);
+
+const onButtonModalSuccessClick = () => {
+  const successModal = document.querySelector('.success');
+  successModal.remove();
+};
+
+const onKeyToSuccessModalClick = (evt) => {
+  if (isEscEvent(evt)) {
+    const successModal = document.querySelector('.success');
+    successModal.remove();
+  }
+};
+
+const onModalSuccessInsideClick = (evt) => {
+  const successInnerTemplate = evt.currentTarget.querySelector('.success__inner');
+  const isClickInside = successInnerTemplate.contains(evt.target);
+
+  if (!isClickInside) {
+    evt.currentTarget.remove();
+  }
+};
+
+const closeSuccessMessageModal = (messageTemplate, messageCloseButton) => {
+  messageCloseButton.addEventListener('click', onButtonModalSuccessClick);
+  document.addEventListener('keydown', onKeyToSuccessModalClick);
+  messageTemplate.addEventListener('click', onModalSuccessInsideClick);
+};
+
+const removeListenerSuccessMessage = (messageTemplate, messageCloseButton) => {
+  messageCloseButton.removeEventListener('click', onButtonModalSuccessClick);
+  document.removeEventListener('keydown', onKeyToSuccessModalClick);
+  messageTemplate.removeEventListener('click', onModalSuccessInsideClick);
+};
+
+const onButtonModalErrorClick = () => {
+  const errorModal = document.querySelector('.error');
+  errorModal.remove();
+};
+
+const onKeyToErrorModalClick = (evt) => {
+  if (isEscEvent(evt)) {
+    const errorModal = document.querySelector('.error');
+    errorModal.remove();
+  }
+};
+
+const onModalErrorInsideClick = (evt) => {
+  const errorInnerTemplate = evt.currentTarget.querySelector('.error__inner');
+  const isClickInside = errorInnerTemplate.contains(evt.target);
+
+  if (!isClickInside) {
+    evt.currentTarget.remove();
+  }
+};
+
+const closeErrorMessageModal = (messageTemplate, messageCloseButton) => {
+  messageCloseButton.addEventListener('click', onButtonModalErrorClick);
+  document.addEventListener('keydown', onKeyToErrorModalClick);
+  messageTemplate.addEventListener('click', onModalErrorInsideClick);
+};
+
+const removeListenerErrorMessage = (messageTemplate, messageCloseButton) => {
+  messageCloseButton.removeEventListener('click', onButtonModalErrorClick);
+  document.removeEventListener('keydown', onKeyToErrorModalClick);
+  messageTemplate.removeEventListener('click', onModalErrorInsideClick);
+};
+
+export {onCloseButtonClick, onEscButtonClick, closeSuccessMessageModal, removeListenerSuccessMessage, closeErrorMessageModal, removeListenerErrorMessage};
