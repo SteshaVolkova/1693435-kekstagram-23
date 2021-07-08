@@ -1,9 +1,8 @@
-import {onCloseButtonClick, closeErrorMessageModal, removeListenerErrorMessage} from './close.js';
+import {onCloseButtonClick, closeErrorMessageModal} from './close.js';
 
 const errorUploadImage = document.querySelector('#error').content.querySelector('section');
 const errorFragment = document.createDocumentFragment();
 const errorUploadImageTemplate = errorUploadImage.cloneNode(true);
-const errorButtonTemplate = errorUploadImageTemplate.querySelector('.error__button');
 
 const onFormErrorSend = () => {
   onCloseButtonClick();
@@ -11,8 +10,7 @@ const onFormErrorSend = () => {
   errorFragment.appendChild(errorUploadImageTemplate);
   document.body.appendChild(errorFragment);
 
-  closeErrorMessageModal(errorUploadImageTemplate, errorButtonTemplate);
+  closeErrorMessageModal();
 };
-removeListenerErrorMessage(errorUploadImageTemplate, errorButtonTemplate);
 
 export {onFormErrorSend};

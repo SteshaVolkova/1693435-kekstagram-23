@@ -1,6 +1,5 @@
 import {pictures} from './render-images.js';
 import {onCloseButtonClick, onEscButtonClick} from './close.js';
-import {isEscEvent} from './utils.js';
 
 const PICTURE_SIZE = 35;
 const COMMENTS_STEP = 5;
@@ -83,17 +82,12 @@ const addPhotoListClickHandler = (photoItem, {url, likes, comments, description}
       commentsLoader.classList.add('hidden');
     }
 
+    document.addEventListener('keydown', onEscButtonClick);
     closeButton.addEventListener('click', onCloseButtonClick);
   };
 
   photoItem.addEventListener('click', onPictureClick);
   closeButton.removeEventListener('click', onCloseButtonClick);
-
-  document.removeEventListener('keydown', (evt) => {
-    if (isEscEvent(evt)) {
-      onEscButtonClick(evt);
-    }
-  });
 };
 
 const addBigPhotoComments = (userPhotoList) => {

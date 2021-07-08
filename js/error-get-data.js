@@ -1,4 +1,4 @@
-import {closeErrorMessageModal, removeListenerErrorMessage} from './close.js';
+import {closeErrorMessageModal} from './close.js';
 
 const ERROR_GET_MESSAGE ='Упс, фото не подгрузились!';
 const ERROR_GET_BUTTON ='Жду';
@@ -17,11 +17,10 @@ const getErrorData = () => {
     errorFragment.appendChild(errorGetImageTemplate);
     document.body.appendChild(errorFragment);
 
-    closeErrorMessageModal(errorGetImageTemplate, errorButtonTemplate);
+    closeErrorMessageModal();
   };
 
   showErrorMessage();
 };
-removeListenerErrorMessage(errorGetImageTemplate, errorButtonTemplate);
 
 export {getErrorData};
