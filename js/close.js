@@ -18,8 +18,16 @@ const iamgePreviewPicture = iamgeUploadPreview.querySelector('img');
 const effectStartClassName = 'effects__preview';
 const selectedEffectClass = iamgePreviewPicture.className.split(' ').filter((c) => !c.startsWith(effectStartClassName));
 const defaultEffect = document.querySelector('#effect-none');
+const closeButton = bigPicture.querySelector('.big-picture__cancel');
+const closeUploadFile = document.querySelector('#upload-cancel');
 
-const onEscButtonClick = (evt) => {
+const removePicturesHendlers = () => {
+  closeUploadFile.removeEventListener('click', onCloseButtonClick);
+  closeButton.removeEventListener('click', onCloseButtonClick);
+  document.removeEventListener('keydown', onEscButtonClick);
+};
+
+function onEscButtonClick(evt) {
   if (isEscEvent(evt)) {
     if(commentDescription === document.activeElement) {
       evt.stopPropagation();
@@ -31,9 +39,9 @@ const onEscButtonClick = (evt) => {
       uploadFile.value = '';
     }
   }
-};
+}
 
-const onCloseButtonClick = () => {
+function onCloseButtonClick() {
   userUploadPhoto.classList.add('hidden');
   bigPicture.classList.add('hidden');
   document.body.classList.remove('modal-open');
@@ -53,7 +61,8 @@ const onCloseButtonClick = () => {
   iamgePreviewPicture.style.filter = 'none';
   defaultEffect.checked = 'true';
   document.removeEventListener('keydown', onEscButtonClick);
-};
+  removePicturesHendlers();
+}
 
 const removeListenerSuccessMessage = () => {
   const successModal = document.querySelector('.success');
@@ -64,21 +73,21 @@ const removeListenerSuccessMessage = () => {
   successModal.removeEventListener('click', onModalSuccessOutsideClick);
 };
 
-const onButtonModalSuccessClick = () => {
+function onButtonModalSuccessClick() {
   const successModal = document.querySelector('.success');
   removeListenerSuccessMessage();
   successModal.remove();
-};
+}
 
-const onKeyToSuccessModalClick = (evt) => {
+function onKeyToSuccessModalClick(evt) {
   if (isEscEvent(evt)) {
     const successModal = document.querySelector('.success');
     removeListenerSuccessMessage();
     successModal.remove();
   }
-};
+}
 
-const onModalSuccessOutsideClick = (evt) => {
+function onModalSuccessOutsideClick(evt) {
   const successInnerTemplate = evt.currentTarget.querySelector('.success__inner');
   const isClickInside = successInnerTemplate.contains(evt.target);
 
@@ -86,7 +95,7 @@ const onModalSuccessOutsideClick = (evt) => {
     removeListenerSuccessMessage();
     evt.currentTarget.remove();
   }
-};
+}
 
 const closeSuccessMessageModal = () => {
   const successModal = document.querySelector('.success');
@@ -106,21 +115,21 @@ const removeListenerErrorMessage = () => {
   errorModal.removeEventListener('click', onModalErrorOutsideClick);
 };
 
-const onButtonModalErrorClick = () => {
+function onButtonModalErrorClick() {
   const errorModal = document.querySelector('.error');
   removeListenerErrorMessage();
   errorModal.remove();
-};
+}
 
-const onKeyToErrorModalClick = (evt) => {
+function onKeyToErrorModalClick(evt) {
   if (isEscEvent(evt)) {
     const errorModal = document.querySelector('.error');
     removeListenerErrorMessage();
     errorModal.remove();
   }
-};
+}
 
-const onModalErrorOutsideClick = (evt) => {
+function onModalErrorOutsideClick(evt) {
   const errorInnerTemplate = evt.currentTarget.querySelector('.error__inner');
   const isClickInside = errorInnerTemplate.contains(evt.target);
 
@@ -128,7 +137,7 @@ const onModalErrorOutsideClick = (evt) => {
     removeListenerErrorMessage();
     evt.currentTarget.remove();
   }
-};
+}
 
 const closeErrorMessageModal = () => {
   const errorModal = document.querySelector('.error');

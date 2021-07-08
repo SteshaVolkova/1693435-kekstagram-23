@@ -87,7 +87,6 @@ const addPhotoListClickHandler = (photoItem, {url, likes, comments, description}
   };
 
   photoItem.addEventListener('click', onPictureClick);
-  closeButton.removeEventListener('click', onCloseButtonClick);
 };
 
 const addBigPhotoComments = (userPhotoList) => {

@@ -10,6 +10,5 @@ const onUploadButtonClick = () => {
   document.addEventListener('keydown', onEscButtonClick);
   closeUploadFile.addEventListener('click', onCloseButtonClick);
 };
-closeUploadFile.removeEventListener('click', onCloseButtonClick);
 
 uploadFile.addEventListener('change', onUploadButtonClick);
